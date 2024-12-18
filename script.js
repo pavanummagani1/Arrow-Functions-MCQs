@@ -165,3 +165,176 @@ function add(callback) {
     console.log(result);
 }
 add((x, y) => x + y);
+
+
+//21. What will the output be for the following code?
+function funcA(callback1, callback2) {
+    callback1();
+    console.log("A1");
+    callback2();
+    console.log("A2");
+}
+
+function funcB(callback) {
+    console.log("B1");
+    callback();
+    console.log("B2");
+}
+
+funcA(() => funcB(() => console.log("Inside B")), () => console.log("End of A"));
+
+//22. What will be printed to the console by the following code?
+function outerFunc(callback) {
+    console.log("Outer Start");
+    callback();
+    console.log("Outer End");
+}
+
+function innerFunc(callback) {
+    console.log("Inner Start");
+    callback();
+    console.log("Inner End");
+}
+
+outerFunc(() => innerFunc(() => console.log("Innermost")));
+
+//23. What is the result of the following code execution?
+function processA(callback1, callback2) {
+    callback1();
+    callback2();
+    console.log("ProcessA Done");
+}
+
+function processB(callback) {
+    console.log("Start ProcessB");
+    callback();
+    console.log("End ProcessB");
+}
+
+processA(() => processB(() => console.log("Inside ProcessB")), () => console.log("End of ProcessA"));
+
+
+//24. What will the following code print?
+function action1(callback1, callback2) {
+    callback1();
+    console.log("Action 1");
+    callback2();
+}
+
+function action2() {
+    console.log("Action 2");
+}
+
+function action3(callback) {
+    callback();
+    console.log("Action 3");
+}
+
+action1(() => action3(() => console.log("Start")), action2);
+
+
+//25. What will be the final result of this code?
+function step1(callback) {
+    console.log("Step 1");
+    callback();
+}
+
+function step2(callback1, callback2) {
+    callback1();
+    console.log("Step 2");
+    callback2();
+}
+
+step2(() => step1(() => console.log("Inner Step 1")), () => console.log("Inner Step 2"));
+
+//26. What does this code print to the console?
+function first(callback) {
+    console.log("First");
+    callback();
+}
+
+function second(callback) {
+    console.log("Second");
+    callback();
+}
+
+function third() {
+    console.log("Third");
+}
+
+first(() => second(third));
+
+//27. What will the following code output?
+function alpha(callback1, callback2) {
+    console.log("Alpha Start");
+    callback1();
+    console.log("Alpha Middle");
+    callback2();
+    console.log("Alpha End");
+}
+
+function beta(callback) {
+    console.log("Beta Start");
+    callback();
+    console.log("Beta End");
+}
+
+function gamma() {
+    console.log("Gamma");
+}
+
+alpha(() => beta(gamma), () => console.log("Delta"));
+
+//28. What is the output for this code?
+function run1(callback) {
+    console.log("Run1 Start");
+    callback();
+    console.log("Run1 End");
+}
+
+function run2(callback1, callback2) {
+    console.log("Run2 Start");
+    callback1();
+    console.log("Run2 Middle");
+    callback2();
+    console.log("Run2 End");
+}
+
+run2(() => run1(() => console.log("Run1 Inner")), () => console.log("Run2 Inner"));
+
+
+//29. What does the following code print?
+function firstAction(callback) {
+    console.log("Action 1");
+    callback();
+}
+
+function secondAction() {
+    console.log("Action 2");
+}
+
+function thirdAction(callback) {
+    console.log("Action 3");
+    callback();
+}
+
+firstAction(() => thirdAction(secondAction));
+
+
+//30. What is printed when the following code is executed?
+function start(callback1, callback2) {
+    callback1();
+    console.log("Start");
+    callback2();
+}
+
+function middle(callback) {
+    console.log("Middle");
+    callback();
+}
+
+function end() {
+    console.log("End");
+}
+
+start(() => middle(() => console.log("Beginning")), end);
